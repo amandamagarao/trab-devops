@@ -34,6 +34,26 @@ print('|     BEM VINDO AO ZOMBIE DICE!       |')
 print('|                                     |')
 print('|_____________________________________| \n')
 
+#Quantidade de jogadores. pergunta ao usuário a quantidade de jogadores e impossibilita que tenha menos do que 2 por partida.
+
+while quantidadeJogadores < 2:
+    quantidadeJogadores = int(input('Insira a quantidade de jogadores: (ops: somente números) \n'))
+    if quantidadeJogadores < 2:
+
+        print('----------------- ERRO ---------------------\n')
+
+        print('---Você precisa ter no mínimo 2 jogadores---\n')
+
+
+#nome dos jogadores. Pergunta o nome de cada jogar e armazena na lista dos jogadores por meio do append.
+
+
+for i in range (0,quantidadeJogadores):
+    nome = input(f'Digite o nome do jogador {i} \n')
+    jogadores.append(nome)
+    # Iniciando o placar dos jogadores
+    placar[nome] = 0
+
 ''' 
 vamos começar os turnos e os sorteios dos dados, faces e jogadores.
 As pontuações e jogadas precisam ser contabilizadas e armazenadas.
