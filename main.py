@@ -53,3 +53,4 @@ for i in range (0,quantidadeJogadores):
     jogadores.append(nome)
     # Iniciando o placar dos jogadores
     placar[nome] = 0
+
