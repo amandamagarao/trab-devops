@@ -34,3 +34,183 @@ print('|     BEM VINDO AO ZOMBIE DICE!       |')
 print('|                                     |')
 print('|_____________________________________| \n')
 
+''' 
+vamos começar os turnos e os sorteios dos dados, faces e jogadores.
+As pontuações e jogadas precisam ser contabilizadas e armazenadas.
+Os jogadores precisam escolher se querem continuar jogando os dados ou se passam a vez.
+'''
+
+#mandar o computador sortear um dos jogadores para começar o turno
+
+jogador = random.choice(jogadores)
+
+
+'''vamos pedir para o computador escolher aleatóriamente uma cor de dado e uma face desse dado escolhido, 
+em seguida ele contabiliza quantos passos, tiros e cerebros foram tirados,
+depois mostra o resultado.
+'''
+
+#primeiro dado
+rodada= False
+total_cerebros = []
+while rodada == False:
+
+    for jogador in jogadores:
+        turno = False
+
+        #criando uma lista que contabiliza os posntos por jogador
+        cerebrojogador = []
+        tirojogador = []
+        passojogador = []
+
+    #função que reseta o copo e coloca todos os dados retirados novamente depois de cada partida
+        while not turno:
+            def resetarcopo():
+                dados = ['dVerde', 'dVerde', 'dAmarelo', 'dVermelho', 'dVerde', 'dVerde', 'dAmarelo', 'dVermelho', 'dVerde',
+                     'dVerde', 'dAmarelo', 'dVermelho', 'dAmarelo']
+                return dados
+
+
+            dados = resetarcopo()
+
+#variaveis de tiros, cerebros e passos para poder contabilizar, iniciando sempre em 0
+            cerebros = 0
+            passos = 0
+            tiros = 0
+
+#indica a vez de qual jogador é
+            print('---------------------------', jogador, 'é a sua vez---------------------------')
+            sleep(1)
+
+#sorteia o primeiro dado e logo depois retira ele do copo
+            dado1 = random.choice (dados)
+            dados.remove(dado1)
+            sleep(1)
+
+#variáveis que mostram qual em dado e face cair a ação que deve ser realizada
+            if dado1 == 'dVerde':
+                face1 = random.choice (daVerde)
+                print('O primeiro dado é verde e você tirou um',face1)
+                if face1 == 'C':
+                    cerebros = cerebros + 1
+                elif face1 == 'T':
+                    tiros = tiros + 1
+                else:
+                    passos = passos + 1
+
+            elif dado1 == 'dVermelho':
+                face1 = random.choice (daVermelho)
+                print('O primeiro dado é Vermelho e você tirou um',face1)
+                if face1 == 'C':
+                    cerebros = cerebros + 1
+                elif face1 == 'T':
+                    tiros = tiros + 1
+                else:
+                    passos = passos + 1
+
+            else:
+                face1 = random.choice (daAmarelo)
+                print('O primeiro dado é Amarelo e você tirou um',face1)
+                if face1 == 'C':
+                    cerebros = cerebros + 1
+                elif face1 == 'T':
+                    tiros = tiros + 1
+                else:
+                    passos = passos + 1
+
+#segundo dado
+
+            dado2 = random.choice (dados)
+            dados.remove(dado2)
+
+            if dado2 == 'dVerde':
+                face2 = random.choice (daVerde)
+                print('O segundo dado é verde e você tirou um',face2)
+                if face2 == 'C':
+                    cerebros = cerebros + 1
+                elif face2 == 'T':
+                    tiros = tiros + 1
+                else:
+                    passos = passos + 1
+
+            elif dado2 == 'dVermelho':
+                face2 = random.choice (daVermelho)
+                print('O segundo dado é Vermelho e você tirou um',face2)
+                if face2 == 'C':
+                    cerebros = cerebros + 1
+                elif face2 == 'T':
+                    tiros = tiros + 1
+                else:
+                    passos = passos + 1
+
+            else:
+                face2 = random.choice (daAmarelo)
+                print('O segundo dado é Amarelo e você tirou um',face2)
+                if face2 == 'C':
+                    cerebros = cerebros + 1
+                elif face2 == 'T':
+                    tiros = tiros + 1
+                else:
+                    passos = passos + 1
+
+#terceiro dado
+
+            dado3 = random.choice (dados)
+            dados.remove(dado3)
+
+            if dado3 == 'dVerde':
+                face3 = random.choice (daVerde)
+                print('O terceiro dado é verde e você tirou um',face3,'\n')
+                if face3 == 'C':
+                    cerebros = cerebros + 1
+                elif face3 == 'T':
+                    tiros = tiros + 1
+                else:
+                    passos = passos + 1
+
+            elif dado3 == 'dVermelho':
+                face3 = random.choice (daVermelho)
+                print('O terceiro dado é Vermelho e você tirou um',face3,'\n')
+                if face3 == 'C':
+                    cerebros = cerebros + 1
+                elif face3 == 'T':
+                    tiros = tiros + 1
+                else:
+                    passos = passos + 1
+
+            else:
+                face3 = random.choice (daAmarelo)
+                print('O terceiro dado é Amarelo e você tirou um',face3,'\n')
+                if face3 == 'C':
+                    cerebros = cerebros + 1
+                elif face3 == 'T':
+                    tiros = tiros + 1
+                else:
+                    passos = passos + 1
+
+
+#adiciona na lista de cada jogador as pontuações separadas
+            cerebrojogador.append(cerebros)
+            tirojogador.append(tiros)
+            passojogador.append(passos)
+
+#soma a quantidade de cerebros, tiros e passos na lista e mostra somente o valor total
+            somacerebros = sum(cerebrojogador)
+            print('cerebros ->', somacerebros)
+
+            somapassos = sum(passojogador)
+            print('passos->', somapassos)
+
+            somatiros = sum(tirojogador)
+            print('tiros ->', somatiros,'\n')
+
+#se o jogador tomar mais de 3 tiros a rodada encerra e mostra a mensagem de que ele perdeu o jogo
+            if somatiros > 2:
+                print(jogador,'**************** você tomou 3 tiros e PERDEU o jogo!********************* \n')
+                print('placar ->', placar,'\n')
+                jogadores.remove(jogador)
+                if len(jogadores) == 1:
+                    print('************************ o outro jogador Venceu!***************************')
+                    break
+
+            sleep(1)
