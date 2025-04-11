@@ -21,6 +21,7 @@ jobs:
             README.md
 
   deploy:
+    needs: devliver
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
