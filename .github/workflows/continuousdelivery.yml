@@ -15,16 +15,17 @@ jobs:
       - name: Simulando Continuous Delivery
         uses: actions/upload-artifact@v4
         with:
-          name: projetozipado.zip
+          name: projetozipado
           path: |
-            '**.py'
+            **.py
             README.md
 
   deploy:
+    needs: devliver
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: projetozipado.zip
+          name: projetozipado
       - name: Display structure of downloaded files
         run: ls -R
