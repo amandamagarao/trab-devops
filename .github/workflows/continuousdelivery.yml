@@ -21,6 +21,7 @@ jobs:
             README.md
 
   deploy:
+    needs: devliver
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
@@ -29,4 +30,3 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
 
-        
