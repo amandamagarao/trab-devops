@@ -53,5 +53,3 @@ jobs:
         with:
             push: true
             tags: user/app:latest
-
-            
